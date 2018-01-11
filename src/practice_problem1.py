@@ -108,7 +108,6 @@ class Box(object):
             self.contents = ''
         else:
             self.contents = contents
-        self.trackcontents = contents
 
     def append_string(self, additional_contents):
         """
@@ -142,7 +141,7 @@ class Box(object):
           :type additional_contents: str
         """
         # --------------------------------------------------------------
-        # TODO: 3. Implement and test this function.
+        # Done: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -165,10 +164,11 @@ class Box(object):
         # --------------------------------------------------------------
 
         extra = ''
-        for k in range(self.volume - len(self.trackcontents)-1):
+        lengthoforigional = len(self.contents)
+        for k in range(self.volume - lengthoforigional):
             if k <= len(additional_contents)-1:
                 self.contents = self.contents + additional_contents[k]
-        for n in range(self.volume - len(self.contents), self.volume+1, 1):
+        for n in range(self.volume - lengthoforigional, self.volume+1, 1):
             if n <= len(additional_contents)-1:
                 extra = extra + additional_contents[n]
         return extra
