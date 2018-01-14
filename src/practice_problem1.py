@@ -43,8 +43,8 @@ def main():
     run_test_append_string()
     run_test_double()
     run_test_shrink()
-#     run_test_double_then_shrink()
-#     run_test_reset()
+    run_test_double_then_shrink()
+    run_test_reset()
 #     run_test_steal()
 #     run_test_get_history()
 #     run_test_combined_box()
@@ -106,8 +106,11 @@ class Box(object):
         self.volume = volume
         if len(contents) > volume:
             self.contents = ''
+            self.begin = ''
         else:
             self.contents = contents
+            self.begin = contents
+        self.beginv = volume
 
     def append_string(self, additional_contents):
         """
@@ -329,7 +332,7 @@ class Box(object):
           :type new_volume: int
         """
         # --------------------------------------------------------------
-        # TODO: 6. Implement and test this function.
+        # Done: 6. Implement and test this function.
         #     The testing code is already written for you (above).
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -337,6 +340,11 @@ class Box(object):
         #    DIFFICULTY:      5
         #    TIME ESTIMATE:   5 minutes.
         # --------------------------------------------------------------
+
+        double = self.double()
+        shrink = self.shrink(new_volume)
+        count = len(double + shrink)
+        return count
 
     def reset(self):
         """
@@ -348,7 +356,7 @@ class Box(object):
           when this Box was constructed.
         """
         # --------------------------------------------------------------
-        # TODO: 7. Implement and test this function.
+        # Done: 7. Implement and test this function.
         #     The testing code is already written for you (above).
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -356,6 +364,9 @@ class Box(object):
         #    DIFFICULTY:      4
         #    TIME ESTIMATE:   5 minutes.
         # --------------------------------------------------------------
+
+        self.contents = self.begin
+        self.volume = self.beginv
 
     def steal(self, other_box):
         """
