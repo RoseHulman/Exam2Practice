@@ -2,8 +2,8 @@
 PRACTICE Test 2, practice_problem 2.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Abbie Peterson.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -42,7 +42,7 @@ def main():
 def run_test_practice_problem2a():
     """ Tests the   practice_problem2a  function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # Done: 2. Implement this TEST function.
     #   It TESTS the  practice_problem2a  function defined below.
     #   Include at least **   4 reasonable   ** tests.
     #
@@ -55,6 +55,30 @@ def run_test_practice_problem2a():
     print('--------------------------------------------------')
     print('Testing the   practice_problem2a   function:')
     print('--------------------------------------------------')
+
+    # Test 1
+    expected = [3, 5, 7, 9]
+    actual = practice_problem2a([2, 4, 6, 8], 1)
+    print('Expected:', expected)
+    print('Actual:  ', actual)
+
+    # Test 2
+    expected = [-1, 0, 1, 2, 6, 8, 66]
+    actual = practice_problem2a([0, 1, 2, 3, 7, 9, 67], -1)
+    print('Expected:', expected)
+    print('Actual:  ', actual)
+
+    # Test 3
+    expected = [12, 12, 12, 12, 19, 17]
+    actual = practice_problem2a([0, 0, 0, 0, 7, 5], 12)
+    print('Expected:', expected)
+    print('Actual:  ', actual)
+
+    # Test 4
+    expected = [5, 6, 7]
+    actual = practice_problem2a([1, 2, 3], 4)
+    print('Expected:', expected)
+    print('Actual:  ', actual)
 
 
 def practice_problem2a(sequence, delta):
@@ -83,6 +107,11 @@ def practice_problem2a(sequence, delta):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   5 minutes.
     ####################################################################
+
+    newseq = []
+    for k in range(len(sequence)):
+        newseq = newseq + [sequence[k] + delta]
+    return newseq
 
 
 def run_test_practice_problem2b():
