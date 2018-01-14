@@ -45,9 +45,9 @@ def main():
     run_test_shrink()
     run_test_double_then_shrink()
     run_test_reset()
-#     run_test_steal()
-#     run_test_get_history()
-#     run_test_combined_box()
+    run_test_steal()
+    run_test_get_history()
+    run_test_combined_box()
 
 
 ########################################################################
@@ -111,6 +111,7 @@ class Box(object):
             self.contents = contents
             self.begin = contents
         self.beginv = volume
+        self.restart = []
 
     def append_string(self, additional_contents):
         """
@@ -365,6 +366,8 @@ class Box(object):
         #    TIME ESTIMATE:   5 minutes.
         # --------------------------------------------------------------
 
+        n = [self.contents]
+        self.restart = n
         self.contents = self.begin
         self.volume = self.beginv
 
@@ -387,7 +390,7 @@ class Box(object):
           :type other_box: Box
         """
         # --------------------------------------------------------------
-        # TODO: 8. Implement and test this function.
+        # Done: 8. Implement and test this function.
         #     The testing code is already written for you (above).
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -399,6 +402,9 @@ class Box(object):
         # FOR FULL CREDIT, YOUR SOLUTION MUST BE NO MORE THAN
         #    ** TWO **   LINES OF CODE.
         ################################################################
+
+        self.reset()
+        other_box.contents = self.append_string(other_box.contents)
 
     def get_history(self):
         """
@@ -439,6 +445,8 @@ class Box(object):
         #    TIME ESTIMATE:   5 minutes.
         # --------------------------------------------------------------
 
+        return self.restart
+
     def combined_box(self, other_box):
         """
         What comes in:
@@ -456,7 +464,7 @@ class Box(object):
           :type other_box: Box
         """
         # --------------------------------------------------------------
-        # TODO: 10. Implement and test this function.
+        # Done: 10. Implement and test this function.
         #     The testing code is already written for you (above).
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -464,6 +472,10 @@ class Box(object):
         #    DIFFICULTY:      4
         #    TIME ESTIMATE:   5 minutes.
         # --------------------------------------------------------------
+
+        newbox = Box(self.contents + other_box.contents, self.volume +
+                     other_box.volume)
+        return newbox
 
 
 ########################################################################
